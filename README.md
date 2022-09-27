@@ -41,6 +41,10 @@ Here we create Services which are Classes with static methods that help us make 
 
 constants.ts file: Here we create and export constant variables that we might use in any place of the project.
 
+# INTERFACES FOLDER
+
+Here we create the interfaces that represent the data that we get from our api.
+
 # ABOUT COMPONENTS
 
 LayoutComponent:
@@ -52,6 +56,16 @@ TopNavbarComponent:
 
 This is the navigation bar which will always be present in our app. With it, the user can navigate to
 the diffreent pages of our app and search for some movie.
+
+MovieCardComponent:
+
+A card component that shows the poster and the title of some movie. This card receives props like the poster url, the title and the id
+of a movie that we get from our api. When you click on the poster the user goes to movie/:movieId (movieId: the id property of that movie).
+
+MovieCardListComponent:
+
+This component displays a list of MovieCardComponent by looping through a list of movies from our api and for each one,
+you display that component and pass the properties of some movie from the list.
 
 # ABOUT PAGES
 
