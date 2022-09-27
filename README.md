@@ -55,6 +55,10 @@ the diffreent pages of our app and search for some movie.
 
 # ABOUT PAGES
 
+NotFoundPage:
+
+It is the 404 Not Found page. If the user visits any route that does not exist in our app, this page will be shown.
+
 HomePage:
 
 This is the main page. Here we will show by default the most popular movies.

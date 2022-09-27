@@ -4,9 +4,9 @@ export interface IHomePageProps {}
 
 const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
   return (
-    <div>
-      <h1>HOME PAGE</h1>
-    </div>
+    <main className="h-screen w-full">
+      <h1>Home Page</h1>
+    </main>
   );
 };
 

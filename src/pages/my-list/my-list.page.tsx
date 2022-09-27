@@ -4,9 +4,9 @@ export interface IMyListPageProps {}
 
 const MyListPage: React.FunctionComponent<IMyListPageProps> = (props) => {
   return (
-    <div>
-      <h1>MY LIST PAGE</h1>
-    </div>
+    <main className="h-screen w-full">
+      <h1>MyList Page</h1>
+    </main>
   );
 };
 
