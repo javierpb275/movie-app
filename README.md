@@ -67,6 +67,11 @@ MovieCardListComponent:
 This component displays a list of MovieCardComponent by looping through a list of movies from our api and for each one,
 you display that component and pass the properties of some movie from the list.
 
+MovieDetailsCardComponent:
+
+It is a similar to the MovieCardComponent but it is larger and has more information about the movie. You display this component in the 
+MovieDetailsPage where you pass an id in the url of the specific movie.
+
 # ABOUT PAGES
 
 NotFoundPage:
@@ -80,3 +85,8 @@ This is the main page. Here we will show by default the most popular movies.
 MyListPage:
 
 In this page the user can see a list of the movies that they have rated or written some comment about.
+
+MovieDetailsPage:
+
+In this page we show all the details of an specific movie that we get from our api using the id that we get from the url of the page.
+In this page we display the MovieDetailsCardComponent.

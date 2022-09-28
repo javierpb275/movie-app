@@ -1,3 +1,8 @@
+export interface IGenre {
+  id: number;
+  name: string;
+}
+
 export interface IMovie {
   id: number;
   original_title: string;
@@ -5,5 +10,9 @@ export interface IMovie {
   overview: string;
   vote_average: number;
   release_date: string;
-  runtime?: number;
+}
+
+export interface IMovieDetails extends IMovie {
+  runtime: number;
+  genres: IGenre[];
 }
