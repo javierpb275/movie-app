@@ -27,4 +27,16 @@ export class MoviesService {
       throw error;
     }
   }
+  static async getMoviesByTextResponse(text: string): Promise<Response> {
+    try {
+      const response = await FetchService.callApi(
+        API_URL.MOVIES.GET.BY_TEXT.URL +
+          `?api_key=${API_KEY}&language=en-US&query=${text}`,
+        API_URL.MOVIES.GET.BY_TEXT.METHOD
+      );
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

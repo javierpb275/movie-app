@@ -90,3 +90,7 @@ MovieDetailsPage:
 
 In this page we show all the details of an specific movie that we get from our api using the id that we get from the url of the page.
 In this page we display the MovieDetailsCardComponent.
+
+SearchMoviePage:
+
+Here we get the list of movies searched by the text typed in the search input of the TopNavbarComponent.
