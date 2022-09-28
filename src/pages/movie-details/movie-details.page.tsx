@@ -1,6 +1,9 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieDetailsCardComponent from "../../components/movie-details-card/movie-details-card.component";
-import { MOVIES_DETAILS } from "../../interfaces/mockapi";
+import { IMovieDetails } from "../../interfaces/movie.interface";
+import { MoviesService } from "../../services/moviesService";
+import NotFoundPage from "../not-found/not-found.page";
 
 export interface IMovieDetailsPageProps {}
 
@@ -8,14 +11,33 @@ const MovieDetailsPage: React.FunctionComponent<IMovieDetailsPageProps> = (
   props
 ) => {
   const { movieId } = useParams();
-  const movieDetails = MOVIES_DETAILS.find(
-    (movie) => movie.id === Number(movieId)
-  );
-  return (
-    <div>
-      <MovieDetailsCardComponent movieDetails={movieDetails} />
-    </div>
-  );
+  const [movieDetails, setMovieDetails] = useState<IMovieDetails>();
+  const [error, setError] = useState(false);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await MoviesService.getMovieByIdResponse(movieId!);
+      const data = await response.json();
+      setMovieDetails(data);
+    };
+    fetchData().catch((error) => {
+      setError(true);
+    });
+  }, [movieId]);
+
+  if (error) {
+    return <h1>SOMETHING WENT WRONG...</h1>;
+  } else if (!movieDetails?.id) {
+    return <NotFoundPage />;
+  } else {
+    return (
+      <div>
+        <MovieDetailsCardComponent
+          key={movieDetails.id}
+          movieDetails={movieDetails}
+        />
+      </div>
+    );
+  }
 };
 
 export default MovieDetailsPage;
