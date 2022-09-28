@@ -11,7 +11,7 @@ const MovieCardListComponent: React.FunctionComponent<
   return (
     <div>
       {props.movies.map((movie) => {
-        return <MovieCardComponent key={movie.id} movie={movie}/>;
+        return <MovieCardComponent key={movie.id} movie={movie} />;
       })}
     </div>
   );

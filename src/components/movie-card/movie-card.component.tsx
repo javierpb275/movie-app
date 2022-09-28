@@ -13,7 +13,7 @@ const MovieCardComponent: React.FunctionComponent<IMovieCardComponentProps> = (
     <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
       <img
         className="rounded-t-lg cursor-pointer"
-        src={'http://image.tmdb.org/t/p/w400' + props.movie.poster_path}
+        src={"http://image.tmdb.org/t/p/w400" + props.movie.poster_path}
         alt={props.movie.original_title}
         onClick={() => navigate(`/movie/${props.movie.id}`)}
       />

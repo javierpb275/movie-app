@@ -36,7 +36,11 @@ const MovieDetailsCardComponent: React.FunctionComponent<
           <p className="text-gray-600 text-xs mb-1">
             Genres:
             {props.movieDetails?.genres.map((genre) => {
-              return <span key={genre.id} className="ml-0.5 mr-0.5">{genre.name}</span>;
+              return (
+                <span key={genre.id} className="ml-0.5 mr-0.5">
+                  {genre.name}
+                </span>
+              );
             })}
           </p>
         </div>

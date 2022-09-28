@@ -69,7 +69,7 @@ you display that component and pass the properties of some movie from the list.
 
 MovieDetailsCardComponent:
 
-It is a similar to the MovieCardComponent but it is larger and has more information about the movie. You display this component in the 
+It is a similar to the MovieCardComponent but it is larger and has more information about the movie. You display this component in the
 MovieDetailsPage where you pass an id in the url of the specific movie.
 
 # ABOUT PAGES
