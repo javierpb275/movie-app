@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MovieCardListComponent from "../../components/movie-card-list/movie-card-list.component";
-import { MOVIES } from "../../interfaces/mockapi";
+import { IMovie } from "../../interfaces/movie.interface";
+import { MoviesService } from "../../services/moviesService";
 
 export interface IHomePageProps {}
 
 const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
-  return <MovieCardListComponent movies={MOVIES} />;
+  const [movies, setMovies] = useState<IMovie[]>([]);
+  useEffect(() => {
+    MoviesService.getPopularMoviesResponse()
+      .then((response) => response.json())
+      .then((data) => setMovies(data.results));
+  }, []);
+  return <MovieCardListComponent movies={movies} />;
 };
 
 export default HomePage;
