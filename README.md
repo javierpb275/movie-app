@@ -111,3 +111,9 @@ In this page we also show the list of reviews of that specific movie and also a 
 SearchMoviePage:
 
 Here we get the list of movies searched by the text typed in the search input of the TopNavbarComponent.
+
+# ABOUT REDUX:
+
+store folder:
+
+In this folder we configure our redux store and create all our reducers with their state and actions.

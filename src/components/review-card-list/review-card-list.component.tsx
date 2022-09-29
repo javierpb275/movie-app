@@ -17,7 +17,7 @@ const ReviewCardListComponent: React.FunctionComponent<
         <ul className="divide-y">
           {props.reviews.map((review) => {
             return (
-              <li className="py-3 sm:py-4">
+              <li className="py-3 sm:py-4" key={review.id}>
                 <ReviewCardComponent key={review.id} review={review} />
               </li>
             );
