@@ -72,6 +72,22 @@ MovieDetailsCardComponent:
 It is a similar to the MovieCardComponent but it is larger and has more information about the movie. You display this component in the
 MovieDetailsPage where you pass an id in the url of the specific movie.
 
+RateMovieFormComponent:
+
+Form where you rate the movie shown on MovieDetailsPage and write some comment.
+
+RatingCountComponent:
+
+A star with the vote_average of the movie or the rate of some review.
+
+ReviewCardComponent:
+
+This component shows a specific review with the username, avatar, rate and comment.
+
+ReviewCardListComponent:
+
+This component shows a list of ReviewCardComponent.
+
 # ABOUT PAGES
 
 NotFoundPage:
@@ -90,6 +106,7 @@ MovieDetailsPage:
 
 In this page we show all the details of an specific movie that we get from our api using the id that we get from the url of the page.
 In this page we display the MovieDetailsCardComponent.
+In this page we also show the list of reviews of that specific movie and also a form where you can create more reviews.
 
 SearchMoviePage:
 

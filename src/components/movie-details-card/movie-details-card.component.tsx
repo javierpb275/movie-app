@@ -1,4 +1,5 @@
 import { IMovieDetails } from "../../interfaces/movie.interface";
+import RatingCountComponent from "../rating-count/rating-count.component";
 
 export interface IMovieDetailsCardComponentProps {
   movieDetails: IMovieDetails;
@@ -24,9 +25,15 @@ const MovieDetailsCardComponent: React.FunctionComponent<
           <p className="text-gray-700 text-base mb-4">
             {props.movieDetails.overview}
           </p>
-          <p className="text-gray-600 text-xs mb-1">
-            vote average: {props.movieDetails.vote_average}
-          </p>
+          <div className="mb-4">
+            <RatingCountComponent
+              vote_average={Number(
+                (
+                  Math.round(props.movieDetails.vote_average * 100) / 100
+                ).toFixed(2)
+              )}
+            />
+          </div>
           <p className="text-gray-600 text-xs mb-1">
             Release date: {props.movieDetails.release_date}
           </p>

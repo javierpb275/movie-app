@@ -1,4 +1,5 @@
 import { IMovie, IMovieDetails } from "./movie.interface";
+import { IReview } from "./review.interface";
 
 export const MOVIES: IMovie[] = [
   {
@@ -219,5 +220,36 @@ export const MOVIES_DETAILS: IMovieDetails[] = [
         name: "Drama",
       },
     ],
+  },
+];
+
+export const REVIEWS: IReview[] = [
+  {
+    id: 1,
+    movie_id: 760161,
+    username: "pepe",
+    rate: 6.9,
+  },
+  {
+    id: 2,
+    movie_id: 760161,
+    username: "maria",
+    rate: 3.23,
+    comment:
+      "maria speaking Lorem ipsum whatever you want to say blablablablabalala kefofnweofnwen ewifnmowefn ewifjwoefi.",
+  },
+  {
+    id: 3,
+    movie_id: 985939,
+    username: "paco",
+    rate: 7.34,
+    comment:
+      "paco speaking Lorem ipsum whatever you want to say blablablablabalala kefofnweofnwen ewifnmowefn ewifjwoefi.",
+  },
+  {
+    id: 4,
+    movie_id: 985939,
+    username: "sara",
+    rate: 9.3,
   },
 ];
