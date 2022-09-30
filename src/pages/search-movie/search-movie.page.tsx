@@ -27,7 +27,7 @@ const SearchMoviePage: React.FunctionComponent<ISearchMoviePageProps> = (
     });
   }, [text]);
   if (isLoading) {
-    return <SpinnerComponent size={20} title={"SEARCHING MOVIES..."}/>;
+    return <SpinnerComponent size={6} title={"SEARCHING MOVIES..."}/>;
   } else if (error) {
     return <h1>SOMETHING WENT WRONG...</h1>;
   } else {

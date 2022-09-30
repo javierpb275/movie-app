@@ -37,7 +37,7 @@ const MovieDetailsPage: React.FunctionComponent<IMovieDetailsPageProps> = (
     });
   }, [movieId]);
   if (isLoading) {
-    return <SpinnerComponent size={20} title={'LOADING MOVIE...'}/>;
+    return <SpinnerComponent size={6} title={'LOADING MOVIE...'}/>;
   } else if (error) {
     return <h1>SOMETHING WENT WRONG!</h1>;
   } else {

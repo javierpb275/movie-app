@@ -23,7 +23,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
     });
   }, [fetchData]);
   if (isLoading) {
-    return <SpinnerComponent size={20} title={'LOADING MOVIES...'}/>;
+    return <SpinnerComponent size={6} title={'LOADING MOVIES...'}/>;
   } else if (error) {
     return <h1>SOMETHING WENT WRONG!</h1>;
   } else {

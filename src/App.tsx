@@ -28,7 +28,7 @@ function App() {
             element={
               <React.Suspense
                 fallback={
-                  <SpinnerComponent size={20} title={"LOADING HOME PAGE..."} />
+                  <SpinnerComponent size={6} title={"LOADING HOME PAGE..."} />
                 }
               >
                 <PageHome />
@@ -40,7 +40,7 @@ function App() {
             element={
               <React.Suspense
                 fallback={
-                  <SpinnerComponent size={20} title={"SEARCHING MOVIES..."} />
+                  <SpinnerComponent size={6} title={"SEARCHING MOVIES..."} />
                 }
               >
                 <PageSearchMovie />
@@ -53,7 +53,7 @@ function App() {
               <React.Suspense
                 fallback={
                   <SpinnerComponent
-                    size={20}
+                    size={6}
                     title={"LOADING LIST OF MOVIES..."}
                   />
                 }
@@ -67,7 +67,7 @@ function App() {
             element={
               <React.Suspense
                 fallback={
-                  <SpinnerComponent size={20} title={"LOADING MOVIE..."} />
+                  <SpinnerComponent size={6} title={"LOADING MOVIE..."} />
                 }
               >
                 <PageMovieDetails />
@@ -77,7 +77,7 @@ function App() {
           <Route
             path="*"
             element={
-              <React.Suspense fallback={<SpinnerComponent size={20} />}>
+              <React.Suspense fallback={<SpinnerComponent size={6} />}>
                 <PageNotFound />
               </React.Suspense>
             }
