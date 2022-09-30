@@ -44,7 +44,7 @@ const RateMovieFormComponent: React.FunctionComponent<
     dispatch(addRatedMovie(props.movie));
   };
   return (
-    <form onSubmit={submitHandler} className="m-4">
+    <form onSubmit={submitHandler} className="m-10">
       <h2 className="font-medium">RATE THE MOVIE:</h2>
       <div className="mb-6 mt-6">
         <label

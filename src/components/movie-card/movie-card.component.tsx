@@ -10,15 +10,15 @@ const MovieCardComponent: React.FunctionComponent<IMovieCardComponentProps> = (
 ) => {
   const navigate = useNavigate();
   return (
-    <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div className="m-5 bg-[#101522] rounded-lg px-10">
       <img
         className="rounded-t-lg cursor-pointer"
-        src={"http://image.tmdb.org/t/p/w400" + props.movie.poster_path}
+        src={"http://image.tmdb.org/t/p/w300" + props.movie.poster_path}
         alt={props.movie.original_title}
         onClick={() => navigate(`/movie/${props.movie.id}`)}
       />
-      <div className="p-5">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <div className="p-2">
+        <h5 className="text-2xl font-bold tracking-tight text-white dark:text-white">
           {props.movie.original_title}
         </h5>
       </div>
