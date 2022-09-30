@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import MovieDetailsCardComponent from "../../components/movie-details-card/movie-details-card.component";
 import RateMovieFormComponent from "../../components/rate-movie-form/rate-movie-form.component";
 import ReviewCardListComponent from "../../components/review-card-list/review-card-list.component";
+import SpinnerComponent from "../../components/spinner/spinner.component";
 import { IMovieDetails } from "../../interfaces/movie.interface";
 import { MoviesService } from "../../services/moviesService";
 import { RootState } from "../../store";
@@ -36,7 +37,7 @@ const MovieDetailsPage: React.FunctionComponent<IMovieDetailsPageProps> = (
     });
   }, [movieId]);
   if (isLoading) {
-    return <h1>LOADING...</h1>;
+    return <SpinnerComponent size={20} title={'LOADING MOVIE...'}/>;
   } else if (error) {
     return <h1>SOMETHING WENT WRONG!</h1>;
   } else {

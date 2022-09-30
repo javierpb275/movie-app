@@ -88,6 +88,10 @@ ReviewCardListComponent:
 
 This component shows a list of ReviewCardComponent.
 
+SpinnerComponent:
+
+It is used when loading data or any page.
+
 # ABOUT PAGES
 
 NotFoundPage:

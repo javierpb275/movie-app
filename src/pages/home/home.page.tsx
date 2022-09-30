@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import MovieCardListComponent from "../../components/movie-card-list/movie-card-list.component";
+import SpinnerComponent from "../../components/spinner/spinner.component";
 import { IMovie } from "../../interfaces/movie.interface";
 import { MoviesService } from "../../services/moviesService";
 
@@ -22,7 +23,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
     });
   }, [fetchData]);
   if (isLoading) {
-    return <h1>LOADING...</h1>;
+    return <SpinnerComponent size={20} title={'LOADING MOVIES...'}/>;
   } else if (error) {
     return <h1>SOMETHING WENT WRONG!</h1>;
   } else {

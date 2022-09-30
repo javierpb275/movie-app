@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieCardListComponent from "../../components/movie-card-list/movie-card-list.component";
+import SpinnerComponent from "../../components/spinner/spinner.component";
 import { IMovie } from "../../interfaces/movie.interface";
 import { MoviesService } from "../../services/moviesService";
 
@@ -26,7 +27,7 @@ const SearchMoviePage: React.FunctionComponent<ISearchMoviePageProps> = (
     });
   }, [text]);
   if (isLoading) {
-    return <h1>LOADING...</h1>;
+    return <SpinnerComponent size={20} title={"SEARCHING MOVIES..."}/>;
   } else if (error) {
     return <h1>SOMETHING WENT WRONG...</h1>;
   } else {
