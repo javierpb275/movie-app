@@ -17,6 +17,7 @@ const MovieDetailsPage: React.FunctionComponent<IMovieDetailsPageProps> = (
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState<IMovieDetails>();
   const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const reviews = useSelector((state: RootState) => state.review.allReviews);
   const movie_reviews = reviews.filter(
     (review) => review.movie_id === Number(movieId)
@@ -27,27 +28,32 @@ const MovieDetailsPage: React.FunctionComponent<IMovieDetailsPageProps> = (
       const response = await MoviesService.getMovieByIdResponse(movieId!);
       const data = await response.json();
       setMovieDetails(data);
+      setIsLoading(false);
     };
     fetchData().catch((error) => {
       setError(true);
+      setIsLoading(false);
     });
   }, [movieId]);
-
-  if (error) {
-    return <h1>SOMETHING WENT WRONG...</h1>;
-  } else if (!movieDetails?.id) {
-    return <NotFoundPage />;
+  if (isLoading) {
+    return <h1>LOADING...</h1>;
+  } else if (error) {
+    return <h1>SOMETHING WENT WRONG!</h1>;
   } else {
-    return (
-      <div>
-        <MovieDetailsCardComponent
-          key={movieDetails.id}
-          movieDetails={movieDetails}
-        />
-        <RateMovieFormComponent movie={movieDetails} />
-        <ReviewCardListComponent reviews={movie_reviews} />
-      </div>
-    );
+    if (!movieDetails?.id) {
+      return <NotFoundPage />;
+    } else {
+      return (
+        <div>
+          <MovieDetailsCardComponent
+            key={movieDetails.id}
+            movieDetails={movieDetails}
+          />
+          <RateMovieFormComponent movie={movieDetails} />
+          <ReviewCardListComponent reviews={movie_reviews} />
+        </div>
+      );
+    }
   }
 };
 

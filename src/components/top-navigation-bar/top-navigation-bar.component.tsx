@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export interface ITopNavbarComponentProps {}
@@ -6,11 +6,28 @@ export interface ITopNavbarComponentProps {}
 const TopNavbarComponent: React.FunctionComponent<ITopNavbarComponentProps> = (
   props
 ) => {
+  const [hiddenDropdownMenu, setHiddenDropdownMenu] = useState("hidden");
+  const [hiddenSearchInput, setHiddenSearchInput] = useState("hidden");
   const navigate = useNavigate();
+  const toggleHiddenDropdownMenu = () => {
+    const result = hiddenDropdownMenu === "hidden" ? "" : "hidden";
+    setHiddenDropdownMenu(result);
+  };
+  const toggleHiddenSearchInput = () => {
+    const result = hiddenSearchInput === "hidden" ? "" : "hidden";
+    setHiddenSearchInput(result);
+  };
   return (
     <nav className="border-gray-200 px-2 sm:px-4 py-2.5 rounded sticky top-0 z-50">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
-        <Link to="/" className="flex items-center">
+        <Link
+          to="/"
+          className="flex items-center"
+          onClick={() => {
+            if (!hiddenDropdownMenu.length) toggleHiddenDropdownMenu();
+            if (!hiddenSearchInput.length) toggleHiddenSearchInput();
+          }}
+        >
           <img
             src="https://flowbite.com/docs/images/logo.svg"
             className="mr-3 h-6 sm:h-9"
@@ -22,6 +39,7 @@ const TopNavbarComponent: React.FunctionComponent<ITopNavbarComponentProps> = (
         </Link>
         <div className="flex md:order-2">
           <button
+            onClick={toggleHiddenSearchInput}
             type="button"
             data-collapse-toggle="navbar-search"
             aria-controls="navbar-search"
@@ -43,7 +61,7 @@ const TopNavbarComponent: React.FunctionComponent<ITopNavbarComponentProps> = (
             </svg>
             <span className="sr-only">Search</span>
           </button>
-          <div className="hidden relative md:block">
+          <div className={`${hiddenSearchInput} relative md:block`}>
             <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
               <svg
                 className="w-5 h-5 text-gray-500"
@@ -68,9 +86,16 @@ const TopNavbarComponent: React.FunctionComponent<ITopNavbarComponentProps> = (
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 navigate("/search/" + e.target.value.trim())
               }
+              onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                if (e.key === "Enter") {
+                  if (!hiddenDropdownMenu.length) toggleHiddenDropdownMenu();
+                  if (!hiddenSearchInput.length) toggleHiddenSearchInput();
+                }
+              }}
             />
           </div>
           <button
+            onClick={toggleHiddenDropdownMenu}
             data-collapse-toggle="navbar-search"
             type="button"
             className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -94,7 +119,7 @@ const TopNavbarComponent: React.FunctionComponent<ITopNavbarComponentProps> = (
           </button>
         </div>
         <div
-          className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1"
+          className={`${hiddenDropdownMenu} justify-between items-center w-full md:flex md:w-auto md:order-1`}
           id="navbar-search"
         >
           <div className="relative mt-3 md:hidden">
@@ -118,13 +143,25 @@ const TopNavbarComponent: React.FunctionComponent<ITopNavbarComponentProps> = (
               id="search-navbar"
               className="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search..."
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                navigate("/search/" + e.target.value.trim())
+              }
+              onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                if (e.key === "Enter") {
+                  if (!hiddenDropdownMenu.length) toggleHiddenDropdownMenu();
+                  if (!hiddenSearchInput.length) toggleHiddenSearchInput();
+                }
+              }}
             />
           </div>
-          <ul className="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul
+            onClick={toggleHiddenDropdownMenu}
+            className="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+          >
             <li>
               <Link
                 to="/search"
-                className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Home
               </Link>

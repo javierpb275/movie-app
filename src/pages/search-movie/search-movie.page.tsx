@@ -12,21 +12,29 @@ const SearchMoviePage: React.FunctionComponent<ISearchMoviePageProps> = (
   const { text } = useParams();
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       const response = await MoviesService.getMoviesByTextResponse(text!);
       const data = await response.json();
       setMovies(data.results);
+      setIsLoading(false);
     };
     fetchData().catch((error) => {
       setError(true);
+      setIsLoading(false);
     });
   }, [text]);
-
-  if (error) {
+  if (isLoading) {
+    return <h1>LOADING...</h1>;
+  } else if (error) {
     return <h1>SOMETHING WENT WRONG...</h1>;
   } else {
-    return <MovieCardListComponent movies={movies} />;
+    if (!movies.length) {
+      return <h1>NO MOVIES FOUND</h1>;
+    } else {
+      return <MovieCardListComponent movies={movies} />;
+    }
   }
 };
 

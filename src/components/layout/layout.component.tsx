@@ -8,7 +8,7 @@ const LayoutComponent: React.FunctionComponent<ILayoutComponentProps> = (
   props
 ) => {
   return (
-    <div className="bg-[#101522] text-white">
+    <div className="min-h-screen bg-[#101522] text-white">
       <TopNavbarComponent />
       <Outlet />
     </div>
